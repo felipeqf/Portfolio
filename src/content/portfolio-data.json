@@ -1,0 +1,147 @@
+{
+    "theme": "light",
+    "name": "Felipe Quintero",
+    "title": "Senior Data Scientist",
+    "image": "/src/assets/images/chad.webp",
+    "bio": "Experienced data scientist with a passion for uncovering insights from complex datasets. Skilled in machine learning, natural language processing, and statistical analysis, I specialize in building predictive models to solve real-world problems.",
+    "cv_icon" :"/src/assets/icons/cv-icon.svg",
+    "cv_link": "/src/assets/CV.pdf",
+    "expertises": [
+        "LLMs",
+        "Python",
+        "Machine Learning",
+        "Data Visualization",
+        "Big Data",
+        "MLOps"
+    ],
+    
+    "experience": [
+        {
+            "title": "Senior Data Scientist",
+            "date": "2020 - Present",
+            "company": "Google",
+            "description": "Led a team of data scientists to develop machine learning models for improving search engine algorithms, focusing on natural language understanding and user behavior analysis.",
+            "icon": "/src/assets/icons/google-icon.svg"
+        },
+        {
+            "title": "Data Scientist",
+            "date": "2016 - 2018",
+            "company": "Amazon",
+            "description": "Built recommendation systems for e-commerce platforms, increasing user engagement by 15% through personalized product suggestions.",
+            "icon": "/src/assets/icons/amazon-icon.svg"
+        },
+        {
+            "title": "Junior Data Scientist",
+            "date": "2016 - 2018",
+            "company": "IBM",
+            "description": "Developed predictive models for supply chain optimization, reducing operational costs by 10% through data-driven insights.",
+            "icon": "src/assets/icons/ibm-icon.svg"
+        }
+    ],
+   
+    "education": [
+        {
+            "title": "PhD in Data Science",
+            "date": "2014 - 2018",
+            "school": "University of California, Berkeley",
+            "icon": ""
+        },
+        {
+            "date": "2014 - 2018",
+            "title": "MSc in Statistics",
+            "school": "Stanford University",
+            "icon": ""
+            
+        },
+        {
+            "title": "BSc in Computer Science",
+            "date": "2012-2014",
+            "school": "Massachusetts Institute of Technology",
+            "icon": ""
+            
+        }
+    ],
+    "skills": [
+        {
+            "name": "Programming Languages",
+            "skills": ["Python", "R", "SQL", "JavaScript", "Scala"],
+            "icon": "/src/assets/icons/check-icon.svg"
+        },
+        {
+            "name": "Machine Learning",
+            "skills": ["Supervised Learning", "Unsupervised Learning", "Deep Learning", "Reinforcement Learning"],
+            "icon": ""
+        },
+        {
+            "name": "Data Tools",
+            "skills": ["Pandas", "NumPy", "TensorFlow", "Scikit-Learn", "PyTorch"],
+            "icon": ""
+        },
+        {
+            "name": "Natural Language Processing",
+            "skills": ["Text Classification", 
+            "Sentiment Analysis",
+            "Named Entity Recognition",
+            "Language Models",
+            "Chatbots",
+            "Large Language Model"],
+            "icon": ""
+        }
+    ],
+    "publications": [
+        {
+            "title": "Optimizing Neural Networks for Natural Language Processing: A Case Study",
+            "date": "2020",
+            "publication": "Journal of Machine Learning Research",
+            "link": "https://example.com/neural-networks-nlp",
+            "icon": ""
+        },
+        {
+            "title": "Predictive Modeling for Healthcare Outcomes Using Ensemble Methods",
+            "date": "2019",
+            "publication": "Data Science Quarterly",
+            "link": "https://example.com/healthcare-predictive-modeling",
+            "icon": ""
+        }
+    ], 
+
+    "certifications": [
+        {
+            "date": "2020",
+            "title": "Python for everybody",
+            "school": "Coursera",
+            "link": "",
+            "icon": ""
+        },
+        {
+            "title": "Devops specialist",
+            "date": "2019",
+            "school": "University of Michigan",
+            "link": "",
+            "icon": ""
+        }
+    ], 
+    
+    "social": [
+        {
+            "name": "Email",
+            "icon": "/src/assets/icons/email-icon.svg",
+            "link": "youremail@gmail.com"
+        },
+        {
+            "name": "Github",
+            "icon": "/src/assets/icons/github-icon.svg",
+            "link": "https://github.com/username"
+        },
+        { 
+            "name": "linkedin",
+            "icon": "/src/assets/icons/linkedin-icon.svg",
+            "link": "https://linkedin.com/in/username"
+        },
+        {
+            "name": "website",
+            "icon": "/src/assets/icons/website-icon.svg",
+            "link": "yourwebsite.com"
+        }
+    ]
+}
