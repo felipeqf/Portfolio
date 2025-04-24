@@ -47,18 +47,18 @@ export interface Metadata {
     date: string;
     title: string;
     link: string;
-    tags: string;
+    tags: string[];
 }
 
 export interface Project {
     slug: string;
     metadata: Metadata;
-    html: string;
+    html: string | Promise<string>;
 }
 export interface Blog {
     slug: string;
     metadata: Metadata;
-    html: string;
+    html: string | Promise<string>;
 }
 
 export interface PortfolioData {
@@ -69,6 +69,8 @@ export interface PortfolioData {
     image: string;
     cv_icon: string;
     cv_link: string;
+    copy_icon: string;
+    check_icon: string;
     expertises: string[];
     experience: Experience[];
     skills: Skill[];

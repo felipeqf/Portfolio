@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { base } from '$app/paths';
   import type { PortfolioData } from '../types/types'; 
 
   export let portfolioData: PortfolioData;
@@ -20,17 +21,21 @@
 
           // Only prevent default and scroll if it's an internal hash link
           if (href && href.startsWith('#')) {
-              e.preventDefault();
-              // If we're not on the home page, navigate there first with the hash
-              if (window.location.pathname !== '/') {
-                  window.location.href = '/' + href;
-              } else {
-                  const element = document.querySelector(href);
-                  if (element) {
-                      // Add a slight delay to ensure menu is visually closed before scrolling
-                      requestAnimationFrame(() => {
-                         element.scrollIntoView({ behavior: 'smooth' });
-                      });
+            e.preventDefault();
+            // Check if we are already on the base path (home page)
+            const isHomePage = window.location.pathname === base + '/';
+            const isHomePageRoot = window.location.pathname === base; // Handles case where base might not have trailing slash internally
+
+            if (!isHomePage && !isHomePageRoot) {
+                // Navigate to the base path (home page) plus the hash
+                window.location.href = base + '/' + href; // Constructs /portfolio/#some-id
+            } else {
+                // Already on the home page, just scroll
+                const element = document.querySelector(href);
+                if (element) {
+                    requestAnimationFrame(() => {
+                       element.scrollIntoView({ behavior: 'smooth' });
+                    });
                   }
               }
           }
@@ -61,12 +66,12 @@
 <div class="navigation" bind:this={navElement}>
   <nav>
       <div class="nav-left">
-          <a href="/" class="home-link" on:click={closeMenu}>
-              <div class="logo">
-                  <span class="initial">{portfolioData.name[0].toUpperCase()}</span>
-              </div>
-              <h1 class="name">{portfolioData.name.toUpperCase()}</h1>
-          </a>
+        <a href="{base}/" class="home-link" on:click={closeMenu}>
+          <div class="logo">
+            <span class="initial">{portfolioData.name[0].toUpperCase()}</span>
+          </div>
+          <h1 class="name">{portfolioData.name.toUpperCase()}</h1>
+        </a>
       </div>
 
       <button
@@ -81,15 +86,15 @@
 
       <div class="nav-right {isOpen ? 'open' : ''}">
           <ul class="nav-links">
-              <li><a href="#about" on:click={closeMenu}>About</a></li>
-              <li><a href="#experience" on:click={closeMenu}>Experience</a></li>
-              <li><a href="#projects" on:click={closeMenu}>Projects</a></li>
-              <li><a href="#skills" on:click={closeMenu}>Skills</a></li>
-              <li><a href="#certifications" on:click={closeMenu}>Certifications</a></li>
-              <li><a href="#education" on:click={closeMenu}>Education</a></li>
-              <li><a href="#blogs" on:click={closeMenu}>Blogs</a></li>
-              <li><a href="#publications" on:click={closeMenu}>Publications</a></li>
-              <li><a href="#contact" on:click={closeMenu}>Contact</a></li>
+            <li><a href="{base}/#about" on:click={closeMenu}>About</a></li>
+            <li><a href="{base}/#experience" on:click={closeMenu}>Experience</a></li>
+            <li><a href="{base}/#projects" on:click={closeMenu}>Projects</a></li>
+            <li><a href="{base}/#skills" on:click={closeMenu}>Skills</a></li>
+            <li><a href="{base}/#certifications" on:click={closeMenu}>Certifications</a></li>
+            <li><a href="{base}/#education" on:click={closeMenu}>Education</a></li>
+            <li><a href="{base}/#blogs" on:click={closeMenu}>Blogs</a></li>
+            <li><a href="{base}/#publications" on:click={closeMenu}>Publications</a></li>
+            <li><a href="{base}/#contact" on:click={closeMenu}>Contact</a></li>
           </ul>
       </div>
   </nav>

@@ -1,10 +1,8 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
 
-export default {
-  plugins: [sveltekit()],
-  build: {
-    rollupOptions: {
-      input: 'src/app.html'
-    }
-  }
-};
+export default defineConfig({
+    plugins: [sveltekit()], // Keep the sveltekit plugin
+
+    assetsInclude: ['**/*.md'],
+});

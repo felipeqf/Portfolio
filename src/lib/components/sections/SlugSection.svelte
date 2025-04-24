@@ -2,6 +2,7 @@
     export let sectionId: string;
     export let sectionTitle: string;
     export let items: any[];
+    import { base } from '$app/paths';
     import { fadeIn } from '$lib/components/sections/fadeIn';
 </script>
   
@@ -19,14 +20,14 @@
                   <img src={item.metadata.icon} alt="">
               </div>
               <h3>
-                <a href={`/${sectionId === 'projects' ? 'projects' : 'blogs'}/${item.slug}`} class="internal-link">
+                <a href={`${base}/${sectionId === 'projects' ? 'projects' : 'blogs'}/${item.slug}`} class="internal-link">
                   {item.metadata?.title ?? item.title}
                 </a>
               </h3>
             </div>
           {:else}
           <h3>
-            <a href={`/${sectionId === 'projects' ? 'projects' : 'blogs'}/${item.slug}`} class="internal-link">
+            <a href={`${base}/${sectionId === 'projects' ? 'projects' : 'blogs'}/${item.slug}`} class="internal-link">
               {item.metadata?.title ?? item.title}
             </a>
           </h3>

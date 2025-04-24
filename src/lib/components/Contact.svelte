@@ -3,9 +3,6 @@
 
     export let portfolioData: PortfolioData;
 
-    import copyIcon from '../../assets/icons/copy-icon.svg';
-    import checkIcon from '../../assets/icons/check-icon.svg'; 
-
     let copied: boolean = false;
 
     function copyToClipboard(email: string): void {
@@ -46,7 +43,7 @@
                         <span>{contact.link}</span>
                     </a>
                     <button class="copy-button" on:click={() => copyToClipboard(contact.link!)} title="Copy email address">
-                        <img src={copied ? checkIcon : copyIcon} alt={copied ? 'Copied' : 'Copy'} />
+                        <img src={copied ? portfolioData.check_icon : portfolioData.copy_icon} alt={copied ? 'Copied' : 'Copy'} />
                     </button>
                 </div>
             {:else if contact.link}

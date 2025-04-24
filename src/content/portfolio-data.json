@@ -2,10 +2,12 @@
     "theme": "light",
     "name": "Felipe Quintero",
     "title": "Senior Data Scientist",
-    "image": "/src/assets/images/chad.webp",
+    "image": "images/chad.webp",
     "bio": "Experienced data scientist with a passion for uncovering insights from complex datasets. Skilled in machine learning, natural language processing, and statistical analysis, I specialize in building predictive models to solve real-world problems.",
-    "cv_icon" :"/src/assets/icons/cv-icon.svg",
-    "cv_link": "/src/assets/CV.pdf",
+    "cv_icon" :"icons/cv-icon.svg",
+    "cv_link": "CV.pdf",
+    "copy_icon": "icons/copy-icon.svg",
+    "check_icon": "icons/check-icon.svg",
     "expertises": [
         "LLMs",
         "Python",
@@ -21,21 +23,21 @@
             "date": "2020 - Present",
             "company": "Google",
             "description": "Led a team of data scientists to develop machine learning models for improving search engine algorithms, focusing on natural language understanding and user behavior analysis.",
-            "icon": "/src/assets/icons/google-icon.svg"
+            "icon": "icons/google-icon.svg"
         },
         {
             "title": "Data Scientist",
             "date": "2016 - 2018",
             "company": "Amazon",
             "description": "Built recommendation systems for e-commerce platforms, increasing user engagement by 15% through personalized product suggestions.",
-            "icon": "/src/assets/icons/amazon-icon.svg"
+            "icon": "icons/amazon-icon.svg"
         },
         {
             "title": "Junior Data Scientist",
             "date": "2016 - 2018",
             "company": "IBM",
             "description": "Developed predictive models for supply chain optimization, reducing operational costs by 10% through data-driven insights.",
-            "icon": "src/assets/icons/ibm-icon.svg"
+            "icon": "icons/ibm-icon.svg"
         }
     ],
    
@@ -65,7 +67,7 @@
         {
             "name": "Programming Languages",
             "skills": ["Python", "R", "SQL", "JavaScript", "Scala"],
-            "icon": "/src/assets/icons/check-icon.svg"
+            "icon": "icons/check-icon.svg"
         },
         {
             "name": "Machine Learning",
@@ -125,23 +127,23 @@
     "social": [
         {
             "name": "Email",
-            "icon": "/src/assets/icons/email-icon.svg",
+            "icon": "icons/email-icon.svg",
             "link": "youremail@gmail.com"
         },
         {
             "name": "Github",
-            "icon": "/src/assets/icons/github-icon.svg",
+            "icon": "icons/github-icon.svg",
             "link": "https://github.com/username"
         },
         { 
             "name": "linkedin",
-            "icon": "/src/assets/icons/linkedin-icon.svg",
+            "icon": "icons/linkedin-icon.svg",
             "link": "https://linkedin.com/in/username"
         },
         {
             "name": "website",
-            "icon": "/src/assets/icons/website-icon.svg",
-            "link": "yourwebsite.com"
+            "icon": "icons/website-icon.svg",
+            "link": "https://yourwebsite.com"
         }
     ]
 }
