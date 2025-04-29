@@ -77,6 +77,8 @@
     --contact-item-background-hover: rgba(60, 60, 60, 0.65);
     
     --icon-filter: invert(100%) brightness(1);
+
+    --next-button-background: #0055aa;
 }
 
 .theme-forest {

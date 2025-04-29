@@ -1,8 +1,9 @@
 {
+    "basePath": "/portfolio",
     "theme": "light",
-    "name": "Felipe Quintero",
+    "name": "John Doe",
     "title": "Senior Data Scientist",
-    "image": "images/chad.webp",
+    "image": "images/Portrait_Placeholder.png",
     "bio": "Experienced data scientist with a passion for uncovering insights from complex datasets. Skilled in machine learning, natural language processing, and statistical analysis, I specialize in building predictive models to solve real-world problems.",
     "cv_icon" :"icons/cv-icon.svg",
     "cv_link": "CV.pdf",
@@ -66,28 +67,23 @@
     "skills": [
         {
             "name": "Programming Languages",
-            "skills": ["Python", "R", "SQL", "JavaScript", "Scala"],
-            "icon": "icons/check-icon.svg"
+            "skills": ["Python", "R", "SQL", "JavaScript", "C#"],
+            "icon": "icons/programming-icon.svg"
         },
         {
             "name": "Machine Learning",
             "skills": ["Supervised Learning", "Unsupervised Learning", "Deep Learning", "Reinforcement Learning"],
-            "icon": ""
+            "icon": "icons/ml-icon.svg"
         },
         {
             "name": "Data Tools",
             "skills": ["Pandas", "NumPy", "TensorFlow", "Scikit-Learn", "PyTorch"],
-            "icon": ""
+            "icon": "icons/tools-icon.svg"
         },
         {
-            "name": "Natural Language Processing",
-            "skills": ["Text Classification", 
-            "Sentiment Analysis",
-            "Named Entity Recognition",
-            "Language Models",
-            "Chatbots",
-            "Large Language Model"],
-            "icon": ""
+            "name": "Databases",
+            "skills": ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+            "icon": "icons/database-icon.svg"
         }
     ],
     "publications": [

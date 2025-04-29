@@ -1,5 +1,9 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import fs from 'fs';
+
+// Read portfolio data using fs
+const portfolioData = JSON.parse(fs.readFileSync('./src/content/data/portfolio-data.json', 'utf-8'));
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -14,21 +18,11 @@ const config = {
             strict: true
         }),
 
-        // --- THIS IS THE IMPORTANT PART ---
-        // Set the base path for production builds because the repo name is 'portfolio'
         paths: {
-            // Apply '/portfolio' only when building for production (npm run build)
+            // Apply '/your-repo-name' only when building for production (npm run build)
             // Use an empty string '' for local development (npm run dev)
-            base: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
-
-            // You generally don't need to set 'assets' unless your assets
-            // are served from a completely different domain (like a CDN).
-            // assets: ''
+            base: process.env.NODE_ENV === 'production' ? portfolioData.basePath : '',
         }
-        // --- END OF IMPORTANT PART ---
-
-        // Prerendering config remains important, handled by exports in +page.server.ts
-        // prerender: { ... }
     }
 };
 

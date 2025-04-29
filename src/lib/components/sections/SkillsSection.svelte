@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fadeIn } from './fadeIn';
+    import { fadeIn } from '../../utils/fadeIn';
     type SkillCategory = {
       name: string;
       skills: string[];
@@ -100,7 +100,7 @@
     justify-content: center;
     box-shadow: 0 2px 10px var(--icon-shadow);
     transition: transform 0.2s ease, background 0.3s ease;
-    flex-shrink: 0; /* Added from previous good suggestion */
+    flex-shrink: 0;
   }
 
   .skill-icon:hover {
@@ -110,7 +110,7 @@
   .skill-icon img {
     width: 28px;
     height: 28px;
-    /* filter: var(--icon-filter);*/ /* if you want to apply a filter only for monotone icons*/
+    filter: var(--icon-filter);
   }
 
   .skill-tags {

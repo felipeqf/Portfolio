@@ -1,8 +1,9 @@
 ---
 title: test
 date: 27/03/2025
-link: www.github.com
+link: https://github.com/example
 tags: ["SvelteKit", "TypeScript", "TailwindCSS"]
+display_order: 3
 ---
 # Title 1
 

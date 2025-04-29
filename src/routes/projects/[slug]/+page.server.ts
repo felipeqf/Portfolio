@@ -1,50 +1,107 @@
-// src/routes/projects/[slug]/+page.server.js
 import { error } from '@sveltejs/kit';
 import { marked } from 'marked';
 import matter from 'gray-matter';
-import { basename } from 'path'; // Import basename
-// Import EntryGenerator type
-import type { PageServerLoad, EntryGenerator } from './$types';
-import type { Metadata, Project } from '$lib/types/types';
+import { basename } from 'path';
 
-// Mark this dynamic route for prerendering
+import type { PageServerLoad, EntryGenerator } from './$types';
+import type { Metadata, Project, ContentListItem } from '$lib/types/types';
+import { sortByOrderAndDate } from '$lib/utils/sort';
+
 export const prerender = true;
+
+let allSortedProjects: ContentListItem[] | null = null;
+
+// Function to get all projects, sorted, caching the result
+function getAllSortedProjects(): ContentListItem[] {
+    if (allSortedProjects) {
+        return allSortedProjects;
+    }
+
+    // import.meta.glob to find all project files
+    const projectFiles = import.meta.glob<string>(
+        '/src/content/projects/*.md',
+        { eager: true, query: '?raw', import: 'default' }
+    );
+
+    const projectsData: ContentListItem[] = Object.entries(projectFiles).map(([path, rawContent]) => {
+        const slug = basename(path, '.md');
+        const { data } = matter(rawContent);
+        const metadata = data as Metadata;
+
+        if (typeof metadata.display_order !== 'number') {
+            metadata.display_order = Infinity;
+        }
+        // Ensure title exists
+        metadata.title = metadata.title ?? 'Untitled Project';
+        // Ensure date exists for sorting
+        metadata.date = metadata.date || '';
+
+        return {
+            slug,
+            metadata,
+            rawContent
+        };
+    });
+
+    // Sort the projects
+    projectsData.sort(sortByOrderAndDate);
+
+    // Cache the result
+    allSortedProjects = projectsData;
+    return allSortedProjects;
+}
 
 // Define which slugs to generate pages for
 export const entries: EntryGenerator = () => {
-    // Use import.meta.glob to find all project files
-    const projectFiles = import.meta.glob('/src/routes/projects/*.md', { eager: true });
-    // Extract slugs from the file paths
+    const projectFiles = import.meta.glob('/src/content/projects/*.md', { eager: true });
     const slugs = Object.keys(projectFiles).map(path => ({
         slug: basename(path, '.md')
     }));
-    console.log('Prerendering project slugs:', slugs.map(s => s.slug)); // Log slugs being generated
-    return slugs; // Return an array of objects like [{ slug: 'proj-1' }, { slug: 'proj-2' }]
+
+    console.log('Prerendering project slugs:', slugs.map(s => s.slug));
+    return slugs;
 };
 
-// Your existing load function is mostly fine. It will run *during build* for each slug.
 export const load: PageServerLoad = async ({ params }) => {
     try {
         const { slug } = params;
-        // Dynamically import the specific file. This works during prerender
-        // because the 'entries' function tells SvelteKit which imports to expect.
-        const file = await import(`../../projects/${slug}.md?raw`);
-        const { data: metadata, content: markdown } = matter(file.default as string);
 
-        // Ensure metadata matches our Metadata type
-        const typedMetadata = metadata as Metadata;
+        // Get the sorted list (uses cache after first run)
+        const sortedProjects = getAllSortedProjects();
 
+        // Find the current project's data in the list
+        const currentProjectData = sortedProjects.find(p => p.slug === slug);
+
+        if (!currentProjectData) {
+            throw new Error(`Project data not found for slug: ${slug}`); // Internal error signal
+        }
+
+        // Parse the markdown content for the current project
+        const { content: markdown } = matter(currentProjectData.rawContent);
+        const html = marked.parse(markdown);
+
+        // Find current project index in the sorted list
+        const currentIndex = sortedProjects.findIndex(p => p.slug === slug);
+
+        // Determine next project
+        const nextIndex = (currentIndex + 1) % sortedProjects.length;
+        const nextProjectData = sortedProjects[nextIndex];
+
+        // Create the full project object
         const project: Project = {
-            slug: params.slug,
-            metadata: typedMetadata,
-            // Use sync parse during build if preferred
-            html: marked.parse(markdown)
+            slug: currentProjectData.slug,
+            metadata: currentProjectData.metadata,
+            html,
+            nextProject: {
+                slug: nextProjectData.slug,
+                title: nextProjectData.metadata.title ?? 'Untitled Project'
+            }
         };
 
         return project;
-    } catch (e) {
-        console.error(`Prerender error for project slug "${params.slug}":`, e);
-        // Make sure errors clearly indicate which slug failed
-        throw error(404, `Project "${params.slug}" not found during prerender`);
+
+    } catch (e: any) {
+        console.error(`Error loading project slug "${params.slug}":`, e);
+        throw error(404, `Project "${params.slug}" not found. ${e.message || ''}`);
     }
 };

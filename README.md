@@ -1,38 +1,147 @@
-# sv
+# SvelteKit Portfolio Template
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A modern, responsive, and customizable portfolio template built with SvelteKit, TypeScript, and Markdown. Features dynamic content loading, dark/light mode, and smooth animations.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- 🎨 Multiple theme options (Light, Dark, Forest, Ocean)  
+- 📱 Fully responsive design
+- ⚡ Fast page loads with SvelteKit
+- 📝 Markdown-based content management
+- 🔍 SEO friendly
+- 🚀 Easy deployment to GitHub Pages
+- 💻 Code syntax highlighting
+- 🔄 Smooth page transitions
+- 📊 Timeline-based sections
 
+## Quick Start
+
+1. Clone the repository:
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
 ```
 
-## Developing
+2. Install dependencies:
+```bash
+npm install
+```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+3. Start development server:
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Customizing Content
 
-To create a production version of your app:
+### Portfolio Data Configuration
+
+All main content is configured in `src/content/data/portfolio-data.json`. This file contains:
+
+- Personal information
+- Theme settings
+- Experience timeline
+- Skills
+- Education history
+- Social links
+- Publications
+- Certifications
+
+Example structure:
+```json
+{
+    "basePath": "/portfolio",
+    "theme": "light",
+    "name": "Your Name",
+    "title": "Your Title",
+    "bio": "Your bio...",
+    "experience": [...],
+    "skills": [...],
+    "education": [...],
+    "social": [...],
+    "publications": [...],
+    "certifications": [...]
+}
+```
+
+### Projects and Blog Posts
+
+Projects and blog posts are written in Markdown format and stored in:
+- Projects: `src/content/projects/*.md`
+- Blog posts: `src/content/blog_posts/*.md`
+
+#### Markdown File Structure
+
+Each markdown file must include frontmatter metadata:
+
+```markdown
+---
+title: Your Title
+date: YYYY/MM/DD
+link: https://github.com/yourproject
+tags: Tag1, Tag2, Tag3
+display_order: 1 (optional)
+---
+
+## Your Content Here
+
+Regular markdown content...
+```
+
+Required frontmatter fields:
+- `title`: Project/post title
+- `date`: Publication date
+- `tags`: Comma-separated tags or array
+- `link`: External link (optional)
+- `display_order`: Numeric order for sorting (optional)
+
+## Deployment to GitHub Pages
+
+1. Update `portfolio-data.json`:
+```json
+{
+    "basePath": "/your-repo-name"
+}
+```
+
+2. Push your code to GitHub.
+
+3. Enable GitHub Pages:
+   - Go to repository Settings
+   - Navigate to Pages section
+   - Select GitHub Actions as the source
+
+4. The included GitHub Action workflow will automatically:
+   - Build your site
+   - Deploy to GitHub Pages
+   - Make it available at `https://yourusername.github.io/your-repo-name`
+
+The deployment workflow is defined in `.github/workflows/deploy.yml`
+
+## Local Development
 
 ```bash
+# Start development server
+npm run dev
+
+# Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+## Customizing Styles
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Theme colors and styles can be modified in:
+- `src/styles/global.css`: Global theme variables
+- `src/styles/info-section.css`: Timeline and card styles
+- `src/styles/slug-styles.css`: Project/blog post page styles
+
+## License
+
+MIT License - feel free to use this template for your portfolio!
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

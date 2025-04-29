@@ -28,7 +28,7 @@
 
             if (!isHomePage && !isHomePageRoot) {
                 // Navigate to the base path (home page) plus the hash
-                window.location.href = base + '/' + href; // Constructs /portfolio/#some-id
+                window.location.href = base + '/' + href;
             } else {
                 // Already on the home page, just scroll
                 const element = document.querySelector(href);
@@ -92,7 +92,7 @@
             <li><a href="{base}/#skills" on:click={closeMenu}>Skills</a></li>
             <li><a href="{base}/#certifications" on:click={closeMenu}>Certifications</a></li>
             <li><a href="{base}/#education" on:click={closeMenu}>Education</a></li>
-            <li><a href="{base}/#blogs" on:click={closeMenu}>Blogs</a></li>
+            <li><a href="{base}/#blog-posts" on:click={closeMenu}>Blog posts</a></li>
             <li><a href="{base}/#publications" on:click={closeMenu}>Publications</a></li>
             <li><a href="{base}/#contact" on:click={closeMenu}>Contact</a></li>
           </ul>
@@ -102,66 +102,66 @@
 
 <style>
   .navigation {
-    position: fixed;  
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    width: 100%;  
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     background: var(--navbar-background, rgba(255, 255, 255, 0.95));
-    backdrop-filter: blur(10px);  
+    backdrop-filter: blur(10px);
     box-shadow: 0 1px 15px var(--navbar-shadow, var(--card-shadow, rgba(0, 0, 0, 0.1)));
-    z-index: 1000;  
+    z-index: 1000;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   nav {
-    max-width: 70%;  
-    min-width: 1300px;  
-    margin: 0 auto;  
-    display: flex;  
-    justify-content: space-between;  
-    align-items: center;  
-    padding: 15px 0;  
+    max-width: 70%;
+    min-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
   }
 
   .nav-left {
-    display: flex;  
-    align-items: center;  
+    display: flex;
+    align-items: center;
   }
 
   .home-link {
-    display: flex;  
-    align-items: center;  
-    gap: 12px;  
-    text-decoration: none;  
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
     color: var(--text-color);
     transition: transform 0.3s ease, color 0.3s ease;
-    padding: 8px;  
-    border-radius: 12px;  
+    padding: 8px;
+    border-radius: 12px;
   }
 
   .home-link:hover {
-    transform: translateX(3px);  
+    transform: translateX(3px);
   }
 
   .logo {
-    width: 35px;  
-    height: 35px;  
-    padding: 3px;  
+    width: 35px;
+    height: 35px;
+    padding: 3px;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     box-shadow: var(--icon-shadow, rgba(0, 0, 0, 0.1));
-    border-radius: 12px;  
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; 
-    display: flex;  
-    align-items: center;  
-    justify-content: center;  
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .initial {
     color: var(--text-on-primary, white);
-    font-size: 1.5rem;  
-    font-weight: bold;  
-    font-family: var(--font-system); 
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--font-system);
     transition: color 0.3s ease;
   }
 
@@ -176,34 +176,34 @@
   }
 
   .nav-links {
-    list-style: none;  
-    display: flex;  
-    gap: 15px;  
-    margin: 0;  
-    padding: 0;  
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
     align-items: center;
   }
 
   .nav-links li a {
-    text-decoration: none;  
+    text-decoration: none;
     color: var(--text-secondary-color);
-    font-size: 1.1rem;  
-    font-weight: 500;  
-    padding: 8px 12px;  
-    border-radius: 8px;  
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
     transition: all 0.3s ease;
-    position: relative;  
+    position: relative;
   }
 
   .nav-links li a::after {
-    content: '';  
-    position: absolute;  
-    bottom: -2px;  
-    left: 0;  
-    width: 0;  
-    height: 2px;  
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    transition: width 0.3s ease;  
+    transition: width 0.3s ease;
   }
 
   .nav-links li a:hover {
@@ -211,18 +211,18 @@
   }
 
   .nav-links li a:hover::after {
-    width: 100%;  
+    width: 100%;
   }
 
   .burger {
-    display: none;  
-    flex-direction: column;  
-    gap: 6px;  
-    background: none;  
-    border: none;  
-    padding: 8px;  
-    border-radius: 8px;  
-    transition: background-color 0.3s ease;  
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
     cursor: pointer;
   }
 
@@ -231,33 +231,33 @@
   }
 
   .burger div {
-    width: 32px;  
-    height: 3px;  
+    width: 32px;
+    height: 3px;
     background: var(--text-secondary-color);
-    border-radius: 2px;  
+    border-radius: 2px;
     transition: 0.3s ease, background-color 0.3s ease;
-    margin-right: 30px;  
+    margin-right: 30px;
   }
 
   @media (max-width: 1400px) {
     nav {
-      max-width: 100%;  
-      min-width: 100%;  
-      padding: 15px;  
+      max-width: 100%;
+      min-width: 100%;
+      padding: 15px;
     }
 
     .burger {
-      display: flex;  
+      display: flex;
     }
 
     .nav-right {
-      position: fixed;  
+      position: fixed;
       top: 70px; 
-      right: -100%;  
-      width: 100%;  
+      right: -100%;
+      width: 100%;
       height: calc(100vh - 70px); 
       background: var(--navbar-mobile-background, var(--navbar-background, rgba(255, 255, 255, 0.98)));
-      backdrop-filter: blur(10px);  
+      backdrop-filter: blur(10px);
       box-shadow: 0 4px 20px var(--navbar-shadow, var(--card-shadow, rgba(0, 0, 0, 0.1)));
       transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, box-shadow 0.3s ease; /* Updated transition */
       display: flex;
@@ -265,21 +265,21 @@
     }
 
     .nav-right.open {
-      right: 0;  
+      right: 0;
     }
 
     .nav-links {
-      flex-direction: column;  
-      padding: 20px;  
-      gap: 15px;  
+      flex-direction: column;
+      padding: 20px;
+      gap: 15px;
       align-items: stretch; 
       flex-grow: 1; 
       overflow-y: auto;
     }
 
     .nav-links li {
-      width: 100%;  
-      text-align: center;  
+      width: 100%;
+      text-align: center;
     }
 
     .nav-links li a {

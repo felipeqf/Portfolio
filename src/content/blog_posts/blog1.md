@@ -1,5 +1,5 @@
 ---
-title: Test blog 1
+title: Blog Post
 date: 2025/04/27
 link: https://github.com/example
 tags: SvelteKit, TypeScript

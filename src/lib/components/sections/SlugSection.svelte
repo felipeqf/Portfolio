@@ -3,14 +3,38 @@
     export let sectionTitle: string;
     export let items: any[];
     import { base } from '$app/paths';
-    import { fadeIn } from '$lib/components/sections/fadeIn';
+    import { goto } from '$app/navigation';
+    import { fadeIn } from '$lib/utils/fadeIn';
+
+    function navigateToItem(item: any) {
+      const path = `${base}/${sectionId === 'projects' ? 'projects' : 'blogs'}/${item.slug}`;
+      goto(path);
+  }
+
+  // Function to handle keydown events for accessibility
+  function handleKeydown(event: KeyboardEvent, item: any) {
+    // Trigger navigation on Enter or Space key press
+    if (event.key === 'Enter' || event.key === ' ') {
+      // Prevent the default spacebar action (scrolling)
+      event.preventDefault();
+      navigateToItem(item);
+    }
+  }
+    
 </script>
   
 
 <section id={sectionId} class="section" use:fadeIn>
   <h2>{sectionTitle}</h2>
     {#each items as item, index (item.title || index)}
-      <div class="timeline-content">
+    <div
+      class="timeline-content"
+      on:click={() => navigateToItem(item)}
+      on:keydown={(event) => handleKeydown(event, item)}
+      tabindex="0"  
+      role="link"   
+      style="cursor: pointer;"
+    >
         <div class="details">
           {#if item.metadata?.date} <span class="date">{item.metadata.date}</span>{/if}
           <!-- Check for icon -->
@@ -19,23 +43,17 @@
               <div class="timeline-icon">
                   <img src={item.metadata.icon} alt="">
               </div>
-              <h3>
-                <a href={`${base}/${sectionId === 'projects' ? 'projects' : 'blogs'}/${item.slug}`} class="internal-link">
-                  {item.metadata?.title ?? item.title}
-                </a>
-              </h3>
+              <h3 class="title-ref">{item.metadata?.title}</h3>
             </div>
           {:else}
-          <h3>
-            <a href={`${base}/${sectionId === 'projects' ? 'projects' : 'blogs'}/${item.slug}`} class="internal-link">
-              {item.metadata?.title ?? item.title}
-            </a>
-          </h3>
+          <h3 class="title-ref">{item.metadata?.title}</h3>
           {/if}
           {#if item.metadata?.link}
-            <a href={item.link} target="_blank" rel="noopener noreferrer" class="hover-link">
-              <p>{item.link}</p>
-            </a>
+            <div class="external-link-wrapper">
+              <a href={item.metadata.link} class="hover-link" on:click|stopPropagation target="_blank" rel="noopener noreferrer">
+                <p>{item.metadata.link}</p>
+              </a>
+            </div>
           {/if}
           {#if item.metadata?.tags}
             <p>{Array.isArray(item.metadata.tags) ? item.metadata.tags.join(', ') : item.metadata.tags}</p>
@@ -46,5 +64,8 @@
 </section>
 
 <style>
-  @import './info-section.css';
+  @import '/src/styles/info-section.css';
+  .timeline-content .title-ref {
+    color: var(--primary-color);
+  }
 </style>

@@ -3,7 +3,7 @@
   export let sectionTitle: string;
   export let items: any[];
 
-  import { fadeIn } from '$lib/components/sections/fadeIn'
+  import { fadeIn } from '$lib/utils/fadeIn'
 </script>
 
 <section id={sectionId} class="section" use:fadeIn>
@@ -33,9 +33,11 @@
             {/if}
           {/each}
           {#if item.link}
-            <a href={item.link} target="_blank" rel="noopener noreferrer" class="hover-link">
-                <p>{item.link}</p>
-            </a>
+            <div class="external-link-wrapper">
+              <a href={item.link} target="_blank" rel="noopener noreferrer" class="hover-link">
+                  <p>{item.link}</p>
+              </a>
+            </div>
           {/if}
         </div>
       </div>
@@ -44,5 +46,5 @@
 
 
 <style>
-  @import './info-section.css';
+  @import '/src/styles/info-section.css';
 </style>

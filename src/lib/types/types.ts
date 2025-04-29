@@ -47,21 +47,37 @@ export interface Metadata {
     date: string;
     title: string;
     link: string;
-    tags: string[];
+    tags: string[] | string;
+    display_order?: number;
 }
+
+export type ContentListItem = {
+    slug: string;
+    metadata: Metadata;
+    rawContent: string;
+};
 
 export interface Project {
     slug: string;
     metadata: Metadata;
     html: string | Promise<string>;
+    nextProject?: {
+        slug: string;
+        title: string;
+    };
 }
 export interface Blog {
     slug: string;
     metadata: Metadata;
     html: string | Promise<string>;
+    nextBlog?: {
+        slug: string;
+        title: string;
+    };
 }
 
 export interface PortfolioData {
+    basePath: string;
     theme: Theme;
     name: string;
     title: string;

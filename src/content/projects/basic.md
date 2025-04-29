@@ -3,6 +3,7 @@ title: Personal Portfolio Website
 date: 2024/03/28
 link: https://github.com/yourusername/portfolio
 tags: SvelteKit, TypeScript, TailwindCSS
+display_order: 1
 ---
 
 ## Project Overview

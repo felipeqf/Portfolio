@@ -42,8 +42,8 @@
 />
 
 <SlugSection 
-  sectionId="blogs"
-  sectionTitle="Blogs"
+  sectionId="blog-posts"
+  sectionTitle="Blog posts"
   items={blogs}
 />
 

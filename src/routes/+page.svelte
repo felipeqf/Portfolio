@@ -6,6 +6,7 @@
     import Contact from '../lib/components/Contact.svelte';
 
     export let data: PageData;
+    
     const { portfolioData } = data;
     const { projects, blogs } = data.content;
 </script>
@@ -15,5 +16,4 @@
     <About {portfolioData} />
     <DisplaySections {portfolioData} {projects} {blogs} />
     <Contact {portfolioData} />
-
 </div>

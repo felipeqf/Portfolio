@@ -84,6 +84,15 @@
     color: var(--link-hover-color); 
 }
 
+.external-link-wrapper {
+    width: fit-content;
+  }
+  .hover-link {
+    display: inline-block;
+    width: auto;
+    font-size: 0.9em;
+  }
+
 @media (max-width: 900px) {
     .section {
         padding: 0;
