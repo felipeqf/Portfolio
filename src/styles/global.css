@@ -36,6 +36,8 @@
     --navbar-mobile-background: rgba(255, 255, 255, 0.98); 
     --navbar-shadow: rgba(0, 0, 0, 0.08); 
     --hover-background-subtle: rgba(0, 0, 0, 0.05);
+
+    --next-button-background: #0055aa;
 }
 
 .theme-dark {
