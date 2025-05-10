@@ -3,7 +3,7 @@
     import Navbar from '$lib/components/NavBar.svelte';
     import portfolioData from '../../../content/data/portfolio-data.json';
     import { base } from '$app/paths';
-
+    import 'highlight.js/styles/atom-one-dark.css';
     export let data: Project;
     const typedPortfolioData = portfolioData as PortfolioData;
 </script>
@@ -40,5 +40,215 @@
 </div>
 
 <style>
-    @import '../../../styles/slug-styles.css';
+    /*@import '/src/styles/slug-styles.css';*/
+
+    .slug-page-container {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
+}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.slug-article {
+    width: 100%;
+    max-width: 800px;
+    padding: 2.5rem;
+    background: var(--card-background);
+    box-shadow: 0 6px 12px var(--card-shadow);
+    border-radius: 16px;
+    font-size: 16px;
+    border: var(--card-border);
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--card-border);
+    transition: border-color 0.3s ease;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.metadata {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+time {
+    color: var(--date-color);
+    background: var(--date-background);
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px var(--date-shadow);
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tag {
+    background: var(--tag-background);
+    color: var(--tag-color);
+    border: var(--tag-border);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--tag-shadow-hover);
+    background: var(--tag-background-hover);
+}
+
+.content {
+    color: var(--text-color);
+    line-height: 1.75;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.content :global(h2) {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin: 2rem 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 1.5rem 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.content :global(p) {
+    margin: 1.2rem 0;
+    line-height: 1.8;
+}
+
+.content :global(a) {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.content :global(a:hover) {
+    color: var(--link-hover-color);
+    border-color: var(--link-hover-color);
+}
+
+
+.content :global(ul), .content :global(ol) {
+    margin: 1.2rem 0;
+    padding-left: 1.5rem;
+}
+
+.content :global(li) {
+    margin: 0.5rem 0;
+}
+
+.content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    transition: box-shadow 0.3s ease;
+}
+
+.next-navigation {
+    margin-top: 3rem;
+    text-align: right;
+}
+
+.next-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--next-button-background);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.next-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateX(4px);
+}
+
+.arrow {
+    margin-left: 0.5rem;
+    font-size: 1.2em;
+}
+
+@media (max-width: 900px) {
+    .slug-page-container {
+        width: 95%;
+        padding-top: 80px;
+    }
+
+    .slug-article {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .metadata {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .content {
+        font-size: 1rem;
+    }
+    .content :global(pre) {
+         padding: 1rem;
+    }
+}
+
 </style>

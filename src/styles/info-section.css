@@ -51,7 +51,7 @@
 .timeline-icon{
     width: 34px;
     height: 34px;
-    background: var(--icon-background); 
+    background: var(--icon-cards); 
     border-radius: 12px;
     display: flex;
     align-items: center;

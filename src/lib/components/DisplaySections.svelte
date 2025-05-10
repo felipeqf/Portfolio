@@ -1,13 +1,11 @@
 <script lang="ts">
-  import type { PortfolioData, Project, Blog } from '../types/types.js';
-  import SkillsSection from '$lib/components/sections/SkillsSection.svelte';
-  import TimelineSection from '$lib/components/sections/TimelineSection.svelte';
-  import SlugSection from '$lib/components/sections/SlugSection.svelte';
+  import type { PortfolioData, PageData } from '../types/types.js';
+  import SkillsSection from '$lib/components/sections/Skills/SkillsSection.svelte';
+  import TimelineSection from '$lib/components/sections/Timeline/TimelineSection.svelte';
+  import SlugSection from '$lib/components/sections/Slug/SlugSection.svelte';
 
   export let portfolioData: PortfolioData;
-  export let projects: Project[];
-  export let blogs: Blog[];
-
+  export let content: PageData['content'];
 </script>
 
 
@@ -20,14 +18,13 @@
 <SlugSection 
   sectionId="projects"
   sectionTitle="Projects"
-  items={projects}
+  items={content.projects}
+  availableTags={content.projectTags}
 />
-
 
 <SkillsSection
   skillsData={portfolioData.skills}
 />
-
 
 <TimelineSection 
   sectionId="certifications"
@@ -44,7 +41,8 @@
 <SlugSection 
   sectionId="blog-posts"
   sectionTitle="Blog posts"
-  items={blogs}
+  items={content.blogs}
+  availableTags={content.blogTags}
 />
 
 <TimelineSection 

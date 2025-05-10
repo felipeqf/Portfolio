@@ -1,9 +1,9 @@
 ---
-title: test
+title: project
 date: 27/03/2025
 link: https://github.com/example
-tags: ["Pandas", "HTML", "CSS", "C#", "CANVAS", "AI", "Machine Learning"]
-display_order: 7
+tags: Python, Pandas
+display_order: 4
 ---
 # Title 1
 

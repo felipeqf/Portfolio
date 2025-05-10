@@ -1,13 +1,12 @@
 ---
-title: Personal Portfolio Website
-date: 2024/03/28
-link: https://github.com/felipeqf
-tags: SvelteKit, TypeScript, TailwindCSS, Python, Javascript, HTML
-description: Template for quick and easy portfolio
-skip: True
-display_order: 1
+title: Meeting Helper
+date: 27/03/2025
+link: https://github.com/example
+tags: HTML, CSS, SQL
+description: Record your meeting and give you a summary
+skip: False
+display_order: 2
 ---
-
 ## Project Overview
 Built from scratch using SvelteKit and TypeScript, this portfolio showcases my work through an elegant, responsive design. The site features server-side rendering for optimal performance and SEO, while maintaining a smooth client-side experience.
 
@@ -72,7 +71,7 @@ The final product achieved:
 - SEO optimization
 
 ## Code Example
-```typescript
+```javascript
 // Content processing example
 async function processMarkdown(content: string) {
   const { data, content: markdown } = matter(content);
@@ -84,6 +83,12 @@ async function processMarkdown(content: string) {
 }
 ```
 
+```python
+def main(a: str,b:str)-> str
+    c = a + b
+    return c
+```
+![Alt text](@projectImages/project.jpg)
 ## Live Demo
 [Visit the Website](https://yourportfolio.com)
 

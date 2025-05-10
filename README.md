@@ -104,7 +104,23 @@ Required frontmatter fields:
 }
 ```
 
-2. Push your code to GitHub.
+2. Initialize Git and set up your repository:
+```bash
+# Initialize Git repository
+git init
+
+# Add your GitHub repository as remote
+git remote add origin https://github.com/yourusername/your-repo-name.git
+
+# Stage all files
+git add .
+
+# Commit your changes
+git commit -m "Initial commit"
+
+# Push to GitHub
+git push -u origin main
+```
 
 3. Enable GitHub Pages:
    - Go to repository Settings
@@ -115,6 +131,13 @@ Required frontmatter fields:
    - Build your site
    - Deploy to GitHub Pages
    - Make it available at `https://yourusername.github.io/your-repo-name`
+
+Note: If you make changes later, you can redeploy using:
+```bash
+git add .
+git commit -m "Update portfolio content"
+git push origin main
+```
 
 The deployment workflow is defined in `.github/workflows/deploy.yml`
 

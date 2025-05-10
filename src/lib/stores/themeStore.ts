@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-export type Theme = 'light' | 'dark' | 'forest' | 'ocean';
-export const availableThemes: Theme[] = ['light', 'dark', 'forest', 'ocean'];
+export type Theme = 'light' | 'dark' | 'forest' | 'ocean' |'sunset';
+export const availableThemes: Theme[] = ['light', 'dark', 'forest', 'ocean', 'sunset'];
 const defaultTheme: Theme = 'light';
 
 export const themeLoading = writable(true);

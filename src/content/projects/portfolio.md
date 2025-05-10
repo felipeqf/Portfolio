@@ -1,9 +1,9 @@
 ---
-title: test
+title: portfolio
 date: 27/03/2025
 link: https://github.com/example
-tags: ["Pandas", "HTML", "CSS", "C#", "CANVAS", "AI", "Machine Learning"]
-display_order: 7
+tags: HTML, CSS, SQLite, Postgres
+display_order: 3
 ---
 # Title 1
 

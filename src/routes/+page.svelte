@@ -7,13 +7,12 @@
 
     export let data: PageData;
     
-    const { portfolioData } = data;
-    const { projects, blogs } = data.content;
+    const { portfolioData, content } = data;
 </script>
 
 <div class="page-container">
     <Navbar {portfolioData} />
     <About {portfolioData} />
-    <DisplaySections {portfolioData} {projects} {blogs} />
+    <DisplaySections {portfolioData} {content} />
     <Contact {portfolioData} />
 </div>

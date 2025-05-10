@@ -2,7 +2,13 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    plugins: [sveltekit()], // Keep the sveltekit plugin
+    plugins: [sveltekit()],
+    resolve: {
+        alias: {
+            '@projectImages': 'src/content/projects/images',
+            '@blogImages': 'src/content/blog_posts/images'
+        }
+    },
 
-    assetsInclude: ['**/*.md'],
+    assetsInclude: ['**/*.md','**/*.jpg', '**/*.png', '**/*.gif', '**/*.svg'],
 });

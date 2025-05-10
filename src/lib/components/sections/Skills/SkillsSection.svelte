@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fadeIn } from '../../utils/fadeIn';
+    import { fadeIn } from '$lib/utils/fadeIn';
     type SkillCategory = {
       name: string;
       skills: string[];

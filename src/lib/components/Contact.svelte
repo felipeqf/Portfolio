@@ -1,7 +1,11 @@
 <script lang="ts">
-    import type { PortfolioData } from '../../lib/types/types.ts';
+    import type { PortfolioData } from '../types/types.js';
 
     export let portfolioData: PortfolioData;
+
+    const email = portfolioData.social.find(s => s.name.toLowerCase() === 'email');
+    const linkedin = portfolioData.social.find(s => s.name.toLowerCase() === 'linkedin');
+    const github = portfolioData.social.find(s => s.name.toLowerCase() === 'github');
 
     let copied: boolean = false;
 
@@ -34,31 +38,44 @@
     <div class="contact-card">
         <h3>Let's Connect</h3>
         <p>I'm always open to discussing new projects, opportunities in tech, or just having a chat about the latest trends.</p>
-
-        {#each portfolioData.social as contact}
-            {#if contact.name === 'Email' && contact.link}
-                <div class="contact-item">
-                    {#if contact.icon}<img src={contact.icon} alt="Email" />{/if}
-                    <a href={`mailto:${contact.link}`}>
-                        <span>{contact.link}</span>
-                    </a>
-                    <button class="copy-button" on:click={() => copyToClipboard(contact.link!)} title="Copy email address">
-                        <img src={copied ? portfolioData.check_icon : portfolioData.copy_icon} alt={copied ? 'Copied' : 'Copy'} />
-                    </button>
-                </div>
-            {:else if contact.link}
-                <div class="contact-item">
-                    {#if contact.icon}<img src={contact.icon} alt={contact.name} />{/if}
-                    <a href={contact.link} target="_blank" rel="noopener noreferrer">
-                        <span>{contact.link}</span>
-                    </a>
-                </div>
+        {#if email}
+            <div class="contact-item">
+                {#if email.icon}<img src={email.icon} alt="Email" />{/if}
+                <a href={`mailto:${email.link}`}>
+                    <span>{email.link}</span>
+                </a>
+                <button class="copy-button" on:click={() => copyToClipboard(email.link!)} title="Copy email address">
+                    <img src={copied ? portfolioData.check_icon : portfolioData.copy_icon} alt={copied ? 'Copied' : 'Copy'} />
+                </button>
+            </div>
+        {/if}
+        <div class="social-icons">
+            {#if linkedin}
+                <a class="social-icon" href={linkedin.link}><img src={linkedin.icon} alt="Linkedin Icon"></a>
             {/if}
-        {/each}
+            {#if github}
+                <a class="social-icon" href={github.link}><img src={github.icon} alt="Github Icon"></a>
+            {/if}
+            {#if email}
+                <a class="social-icon" href={portfolioData.cv_link} download><img src={portfolioData.cv_icon} alt="CV Icon"></a>
+            {/if}
+        </div>
     </div>
 </section>
 
 <style>
+
+    .social-icons{
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        padding: 12px;
+    }
+
+    .social-icon img{
+        width: 40px;
+        height: 40px;
+    }
     .contact-section {
         text-align: center;
         padding: 60px 20px;
@@ -88,7 +105,7 @@
     }
 
     .contact-card {
-        background: linear-gradient(145deg, var(--card-gradient-start), var(--card-gradient-end));
+        background: var(--card-background);
         padding: 30px;
         border-radius: 20px;
         box-shadow:
@@ -132,7 +149,7 @@
         margin: 20px 0;
         padding: 12px;
         border-radius: 12px;
-        background: var(--contact-item-background, rgba(255, 255, 255, 0.7));
+        background: var(--contact-item-background);
         transition: all 0.2s ease;
     }
 

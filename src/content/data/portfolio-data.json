@@ -1,6 +1,6 @@
 {
     "basePath": "/portfolio",
-    "theme": "light",
+    "theme": "sunset",
     "name": "John Doe",
     "title": "Senior Data Scientist",
     "image": "images/Portrait_Placeholder.png",
@@ -135,11 +135,6 @@
             "name": "linkedin",
             "icon": "icons/linkedin-icon.svg",
             "link": "https://linkedin.com/in/username"
-        },
-        {
-            "name": "website",
-            "icon": "icons/website-icon.svg",
-            "link": "https://yourwebsite.com"
         }
     ]
 }

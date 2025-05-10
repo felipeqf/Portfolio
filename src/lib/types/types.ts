@@ -48,6 +48,8 @@ export interface Metadata {
     title: string;
     link: string;
     tags: string[] | string;
+    description: string;
+    skip: boolean;
     display_order?: number;
 }
 
@@ -100,6 +102,8 @@ export interface PageData {
     content: {
         projects: Project[];
         blogs: Blog[];
+        projectTags: string[];
+        blogTags: string[];
     };
 }
 

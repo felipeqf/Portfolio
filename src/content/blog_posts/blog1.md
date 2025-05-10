@@ -9,3 +9,5 @@ tags: SvelteKit, TypeScript
 
 This is a test project to verify routing works correctly.
 this is the blog 1
+
+![Alt text](@blogImages/blog-post.png)

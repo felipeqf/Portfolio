@@ -2,7 +2,7 @@
 title: Test blog post
 date: 07/03/2024
 link: https://github.com/example
-tags: ["SvelteKit", "TypeScript", "TailwindCSS"]
+tags: SvelteKit, TypeScript, Python
 ---
 
 # Test blog

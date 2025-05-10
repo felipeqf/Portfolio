@@ -36,7 +36,7 @@
     --navbar-mobile-background: rgba(255, 255, 255, 0.98); 
     --navbar-shadow: rgba(0, 0, 0, 0.08); 
     --hover-background-subtle: rgba(0, 0, 0, 0.05);
-
+    --hover-background-color: rgba(0, 0, 0, 0.1);
     --next-button-background: #0055aa;
 }
 
@@ -81,6 +81,8 @@
     --icon-filter: invert(100%) brightness(1);
 
     --next-button-background: #0055aa;
+
+    --hover-background-color: #554d4d;
 }
 
 .theme-forest {
@@ -90,7 +92,7 @@
     --text-color: #333;
     --text-secondary-color: #555;
 
-    --card-background: #ffffff;
+    --card-background: #c8e7c9;
     --card-shadow: rgba(0, 0, 0, 0.08);
     --card-shadow-hover: rgba(0, 0, 0, 0.12);
     --card-gradient-start: #ffffff;
@@ -152,6 +154,49 @@
     --navbar-shadow: rgba(13, 71, 161, 0.15);
 
     --hover-background-subtle: rgba(33, 150, 243, 0.08);
+}
+
+.theme-sunset {
+    --primary-color: #D32F2F;
+    --secondary-color: #B71C1C;
+    --background-color: #ffebee;
+    --text-color: #263238;
+    --text-secondary-color: #455a64;
+
+    --card-background: #ffdfdf;
+    --card-shadow: rgba(0, 0, 0, 0.08);
+    --card-shadow-hover: rgba(0, 0, 0, 0.12);
+    --card-gradient-start: #ffffff;
+    --card-gradient-end: #fff7f7;
+    --card-border: 1px solid rgba(211, 47, 47, 0.15);
+
+    --icon-background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
+    --icon-shadow: rgba(0, 0, 0, 0.08);
+    --icon-cards: none;
+
+    --date-background: linear-gradient(135deg, #e57373 0%, #d32f2f 100%);
+    --date-color: #ffffff;
+    --date-shadow: rgba(0, 0, 0, 0.1);
+
+    --tag-background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    --tag-background-hover: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
+    --tag-color: #c62828;
+    --tag-border: 1px solid rgba(183, 28, 28, 0.2);
+    --tag-shadow-hover: rgba(183, 28, 28, 0.15);
+
+    --h2-after-background: var(--primary-color);
+    --link-hover-color: var(--primary-color);
+
+    --navbar-background: rgba(255, 235, 238, 0.9);
+    --navbar-mobile-background: rgba(255, 235, 238, 0.98);
+    --navbar-shadow: rgba(183, 28, 28, 0.15);
+
+    --hover-background-subtle: rgba(211, 47, 47, 0.08);
+    --hover-background-color: rgba(211, 47, 47, 0.12);
+    --next-button-background: #c62828;
+
+    --contact-item-background: #ffd3d3;
+    --contact-item-background-hover: #f1bbbb;
 }
 
 body {

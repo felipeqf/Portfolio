@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PortfolioData } from '../types/types.js'; 
+  import type { PortfolioData } from '../types/types.js';
 
   export let portfolioData: PortfolioData;
 
@@ -11,6 +11,7 @@
 <section id="about" class="intro">
   <div class="intro-content">
       <div class="left-content">
+        <div class="links-container">
           <span class="tag">{portfolioData.title}</span>
           <div class="social-links">
             {#if linkedin}
@@ -24,11 +25,12 @@
             </a>
             {/if}
             {#if portfolioData.cv_link && portfolioData.cv_icon}
-            <a href={portfolioData.cv_link} class="social-link" title="Download CV" download> <!-- Removed specific filename -->
+            <a href={portfolioData.cv_link} class="social-link" title="Download CV" download>
               <img src={portfolioData.cv_icon} alt="Download CV icon">
             </a>
             {/if}
           </div>
+        </div>
           <h2>{portfolioData.name}</h2>
           <p>
               {portfolioData.bio}
@@ -70,18 +72,22 @@
     padding: 20px;  
     animation: slideIn 0.8s ease-out;  
   }
-
+  .links-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
   .social-links{
     display: flex;
     flex-direction: row;  
-    margin-top: 10px;  
     gap: 10px;  
     margin-left: 6px;  
   }
 
   .social-link img {
-    width: 24px;  
-    height: 24px;  
+    width: 30px;  
+    height: 30px;  
     transition: filter 0.3s ease; 
     filter: var(--icon-filter, invert(0%) brightness(1));
   }

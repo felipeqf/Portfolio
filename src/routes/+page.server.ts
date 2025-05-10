@@ -31,6 +31,8 @@ export const load: PageServerLoad = async () => {
                     date: metadata.date || '',
                     link: metadata.link || '',
                     tags: Array.isArray(metadata.tags) ? metadata.tags : metadata.tags?.split(',').map((t: string) => t.trim()) || [],
+                    description: metadata.description || '',
+                    skip: metadata.skip || false,
                     display_order: typeof metadata.display_order === 'number' ? metadata.display_order : Infinity
                 },
                 html
@@ -48,6 +50,8 @@ export const load: PageServerLoad = async () => {
                     date: metadata.date || '',
                     link: metadata.link || '',
                     tags: Array.isArray(metadata.tags) ? metadata.tags : metadata.tags?.split(',').map((t: string) => t.trim()) || [],
+                    description: metadata.description || '',
+                    skip: metadata.skip || false,
                     display_order: typeof metadata.display_order === 'number' ? metadata.display_order : Infinity
                 },
                 html
@@ -57,10 +61,32 @@ export const load: PageServerLoad = async () => {
         projects.sort(sortByOrderAndDate);
         blogs.sort(sortByOrderAndDate);
 
+        // Calculate tag frequencies and get all tags sorted by frequency
+        const getTagsByFrequency = (items: (Project | Blog)[]) => {
+            const tagFrequency: { [key: string]: number } = {};
+            items.forEach(item => {
+                // Handle both string and string[] types for tags
+                const tags = item.metadata.tags || [];
+                (Array.isArray(tags) ? tags : tags.split(',').map(t => t.trim()))
+                    .forEach(tag => {
+                        tagFrequency[tag] = (tagFrequency[tag] || 0) + 1;
+                    });
+            });
+            return Object.entries(tagFrequency)
+                .sort(([,a], [,b]) => b - a)
+                .map(([tag]) => tag);
+        };
+        
+        const projectTags = getTagsByFrequency(projects);
+        const blogTags = getTagsByFrequency(blogs);
+
+
         const result: PageData = {
             content: {
                 projects,
-                blogs
+                blogs,
+                projectTags,
+                blogTags
             }
         };
         return result;
